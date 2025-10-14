@@ -16,8 +16,7 @@ jobs:
       uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build.yml
     with:
       docker-dir: ${{ inputs.docker-dir }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      repo-token: ${{ secrets.token }}
 
   call-publish:
     needs:
@@ -25,5 +24,4 @@ jobs:
     uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-call.yml
     with:
       docker-dir: ${{ inputs.docker-dir }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      repo-token: ${{ secrets.token }}
