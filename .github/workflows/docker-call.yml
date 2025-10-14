@@ -15,10 +15,8 @@ jobs:
       docker-dir: ${{ inputs.docker-dir }}
 
   call-publish:
-    runs-on: ubuntu-latest
     needs:
       - call-build
-    steps:
-    - uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-call.yml@main
-      with:
-        docker-dir: ${{ inputs.docker-dir }}
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-call.yml@main
+    with:
+      docker-dir: ${{ inputs.docker-dir }}
