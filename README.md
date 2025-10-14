@@ -17,6 +17,7 @@ it takes the directory of your dockerfile as an argument and uses it as a tag fo
 # Making a new job
 
 Using this structure will result in actions that run a test build when a pr is made to main. On push/merge to main in the paths you restrict it to the test build will run and publish if the test build passes.
+
 Using this job as an example you could configure any new action.
 
 `hugobuilder/Dockerfile`
