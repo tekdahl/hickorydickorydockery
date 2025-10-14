@@ -3,8 +3,12 @@ name: Docker Call hugobuilder-rubyless
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'hugobuilder-rubyless/**'
   pull_request:
     branches: [ "main" ]
+    paths:
+      - 'hugobuilder-rubyless/**'
 
 jobs:
   call-build:
