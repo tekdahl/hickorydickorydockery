@@ -17,6 +17,7 @@ jobs:
       #token: ${{ secrets.GITHUB_TOKEN }}
 
   call-publish:
+    if: ${{ github.ref_name != 'main') }}
     needs:
       - call-build
     uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-callable.yml@main
