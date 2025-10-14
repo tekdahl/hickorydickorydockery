@@ -16,5 +16,5 @@ jobs:
     uses: tekdahl/hickorydickorydockery/.github/workflows/docker-call.yml@main
     with:
       docker-dir: hugobuilder
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+    #secrets:
+      #token: ${{ secrets.GITHUB_TOKEN }}
