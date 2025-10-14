@@ -13,11 +13,7 @@ on:
   workflow_dispatch:
     inputs:
       docker-dir:
-        description: 'Directory of the Dockerfile to build (no trailing slash please)'
-        required: true
-        type: string
-      docker-tag:
-        description: 'Docker registry tag'
+        description: 'Directory to build (doubles as tag name)'
         required: true
         type: string
 
@@ -53,12 +49,14 @@ jobs:
           context: ./${{ inputs.docker-dir }}
           file: ./${{ inputs.docker-dir }}/Dockerfile
           push: true
-          tags: "${{ secrets.DOCKER_REGISTRY }}:${{ inputs.docker-tag }}"
+          tags: "${{ secrets.DOCKER_REGISTRY }}:${{ inputs.docker-dir }}"
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v3
         with:
-          subject-name: index.docker.io/my-docker-hub-namespace/my-docker-hub-repository
+          subject-name: index.docker.io/${{ secrets.DOCKER_REGISTRY }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+          
 
