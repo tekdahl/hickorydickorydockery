@@ -53,7 +53,7 @@ jobs:
           context: ./${{ inputs.docker-dir }}
           file: ./${{ inputs.docker-dir }}/Dockerfile
           push: true
-          tags: $ {{ secrets.DOCKER_REGISTRY }}:$ {{ inputs.docker-tag }} 
+          tags: "${{ secrets.DOCKER_REGISTRY }}:${{ inputs.docker-tag }}"
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v3
