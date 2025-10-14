@@ -10,7 +10,7 @@ on:
 
 jobs:
   call-build:
-    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build.yml@main
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build-callable.yml@main
     with:
       docker-dir: ${{ inputs.docker-dir }}
     secrets:
@@ -19,7 +19,7 @@ jobs:
   call-publish:
     needs:
       - call-build
-    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-call.yml@main
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-callable.yml@main
     with:
       docker-dir: ${{ inputs.docker-dir }}
     secrets:
