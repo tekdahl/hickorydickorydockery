@@ -20,6 +20,11 @@ jobs:
     needs:
       - call-build
     uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-callable.yml@main
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
     with:
       docker-dir: ${{ inputs.docker-dir }}
     #secrets:
