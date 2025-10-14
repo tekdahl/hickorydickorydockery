@@ -1,0 +1,22 @@
+name: CallMeMaybe
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'hugobuilder'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'hugobuilder'
+
+jobs:
+  call-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call the caller
+      uses: tekdahl/hickorydickorydockery/.github/workflows/docker-caller.yml
+    with:
+      docker-dir: hugobuilder
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

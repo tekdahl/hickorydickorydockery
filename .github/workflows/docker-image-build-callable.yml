@@ -1,0 +1,17 @@
+name: Docker Image CI
+
+on:
+  workflow_call:
+    inputs:
+      docker-dir:
+        description: 'Directory to build (doubles as tag name)'
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build ./${{ inputs.docker-dir }} --file  ./${{ inputs.docker-dir }}/Dockerfile --tag test:$(date +%s)

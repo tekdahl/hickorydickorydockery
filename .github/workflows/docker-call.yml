@@ -1,0 +1,29 @@
+name: CallMeMaybe
+
+on:
+  workflow_call:
+    inputs:
+      docker-dir:
+        description: 'Directory to build (doubles as tag name)'
+        required: true
+        type: string
+
+jobs:
+  call-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call build
+      uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build.yml
+    with:
+      docker-dir: ${{ inputs.docker-dir }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  call-publish:
+    needs:
+      - call-build
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-publish-call.yml
+    with:
+      docker-dir: ${{ inputs.docker-dir }}
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
