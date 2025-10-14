@@ -49,5 +49,14 @@ jobs:
           context: ./${{ inputs.docker-dir }}
           file: ./${{ inputs.docker-dir }}/Dockerfile
           push: true
-          provenance: mode=max
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: "${{ secrets.DOCKER_REGISTRY }}:${{ inputs.docker-dir }}"
+
+      - name: Generate artifact attestation
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-name: index.docker.io/${{ secrets.DOCKER_REGISTRY }}
+          subject-digest: ${{ steps.push.outputs.digest }}
+          push-to-registry: true
+
+
+
