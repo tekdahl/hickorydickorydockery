@@ -27,5 +27,6 @@ jobs:
       id-token: write
     with:
       docker-dir: ${{ inputs.docker-dir }}
+    secrets: inherit
     #secrets:
       #token: ${{ secrets.GITHUB_TOKEN }}

@@ -17,5 +17,6 @@ jobs:
       id-token: write
     with:
       docker-dir: hugobuilder
+    secrets: inherit
     #secrets:
       #token: ${{ secrets.GITHUB_TOKEN }}
