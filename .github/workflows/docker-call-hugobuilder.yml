@@ -12,9 +12,7 @@ on:
 
 jobs:
   call-build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Call the caller
-      uses: tekdahl/hickorydickorydockery/.github/workflows/docker-caller.yml
+    name: Call the caller
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-caller.yml@main
     with:
       docker-dir: hugobuilder
