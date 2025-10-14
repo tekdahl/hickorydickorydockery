@@ -1,14 +1,14 @@
-name: CallMeMaybe
+name: Docker Call hugobuilder
 
 on:
   push:
     branches: [ "main" ]
     paths:
-      - 'hugobuilder'
+      - 'hugobuilder/**'
   pull_request:
     branches: [ "main" ]
     paths:
-      - 'hugobuilder'
+      - 'hugobuilder/**'
 
 jobs:
   call-build:
