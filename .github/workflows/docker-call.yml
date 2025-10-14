@@ -10,11 +10,9 @@ on:
 
 jobs:
   call-build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build.yml@main
-      with:
-        docker-dir: ${{ inputs.docker-dir }}
+    uses: tekdahl/hickorydickorydockery/.github/workflows/docker-image-build.yml@main
+    with:
+      docker-dir: ${{ inputs.docker-dir }}
 
   call-publish:
     runs-on: ubuntu-latest
