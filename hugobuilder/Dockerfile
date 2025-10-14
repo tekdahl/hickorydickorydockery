@@ -27,10 +27,6 @@ RUN mkdir "${HOME}/.local/hugo" \
 
 RUN tar -C "${HOME}/.local/" -xf "/node.tar.xz"
 
-ENV PATH="$HOME/.local/dart-sass:$PATH"
-ENV PATH="$HOME/.local/hugo:$PATH"
-ENV PATH="$HOME/.local/node-v${NODE_VERSION}-linux-x64/bin:$PATH"
-
 # restart build since gcc and musl-dev should only be necessary to compile
 FROM golang:1.25.2-alpine3.22
 
@@ -50,3 +46,9 @@ COPY --from=builder /usr/lib/ruby/ .
 # copy neocities gem executable
 WORKDIR /usr/bin/
 COPY --from=builder /usr/bin/neocities .
+
+# set PATH
+ENV DART_SASS_VERSION=1.93.2
+ENV HUGO_VERSION=0.151.0
+ENV NODE_VERSION=22.18.0
+ENV PATH="$HOME/.local/dart-sass:$HOME/.local/hugo:$HOME/.local/node-v${NODE_VERSION}-linux-x64/bin:$PATH"
